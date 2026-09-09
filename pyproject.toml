@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "warehouse-llm"
+version = "1.5.0"
+description = "Simulator-based evaluation of LLM spatial reasoning for warehouse robot navigation"
+requires-python = ">=3.10"
+dependencies = [
+  "matplotlib>=3.8",
+  "pandas>=2.1",
+  "streamlit>=1.36",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
+[project.scripts]
+warehouse-llm = "warehouse_llm.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["warehouse_llm*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
